@@ -22,7 +22,9 @@ gem "sprockets", ">= 3.0.0"
 gem "suspenders"
 gem "title"
 gem "uglifier"
-
+gem 'devise'
+gem "haml-rails", "~> 1.0"
+gem "twitter-bootstrap-rails"
 
 group :development do
   gem "listen"
@@ -37,6 +39,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "pry-byebug"
   gem "pry-rails"
+  gem 'rspec-rails', '~> 3.7'
 end
 
 group :test do
