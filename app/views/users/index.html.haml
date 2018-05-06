@@ -8,6 +8,7 @@
       %th= model_class.human_attribute_name(:lastname)
       %th= model_class.human_attribute_name(:email)
       %th= model_class.human_attribute_name(:last_sign_in_at)
+      %th= model_class.human_attribute_name(:active)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @users.each do |user|
@@ -16,6 +17,7 @@
         %td= user.lastname
         %td= user.email
         %td= user.last_sign_in_at.in_time_zone.strftime("%m/%d/%Y at %I:%M%p")
+        %td= user.active? ? 'Yes' : 'No'
         %td
           = link_to "Edit", edit_user_path(user), :class => 'btn btn-default btn-xs'
 
