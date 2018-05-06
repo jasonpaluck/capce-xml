@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.ui.widget
+//= require rails-ujs
 //= require z.jquery.fileupload
 //= require twitter/bootstrap
 //= require bootstrap
