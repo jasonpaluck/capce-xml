@@ -26,6 +26,7 @@ gem 'devise'
 gem "haml-rails", "~> 1.0"
 gem "twitter-bootstrap-rails"
 gem 'aws-sdk', '~> 2'
+gem 'kaminari'
 
 group :development do
   gem "listen"

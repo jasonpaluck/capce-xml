@@ -3,7 +3,7 @@ class UploadsController < ApplicationController
   before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
 
   def index
-    @uploads = Upload.all
+    @uploads = Upload.order(created_at: :desc).page params[:page]
   end
 
   def new
