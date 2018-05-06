@@ -1,58 +1,42 @@
 class UploadsController < ApplicationController
   before_action :set_upload, only: [:show, :edit, :update, :destroy]
+  before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
 
-  # GET /uploads
   def index
     @uploads = Upload.all
   end
 
-  # GET /uploads/1
-  def show
-  end
-
-  # GET /uploads/new
   def new
     @upload = Upload.new
   end
 
-  # GET /uploads/1/edit
-  def edit
-  end
-
-  # POST /uploads
   def create
     @upload = Upload.new(upload_params)
-
+    @upload.user = current_user
     if @upload.save
-      redirect_to @upload, notice: 'Upload was successfully created.'
+      redirect_to uploads_url, notice: 'Upload was successfully created.'
     else
       render :new
     end
   end
 
-  # PATCH/PUT /uploads/1
-  def update
-    if @upload.update(upload_params)
-      redirect_to @upload, notice: 'Upload was successfully updated.'
-    else
-      render :edit
-    end
-  end
 
-  # DELETE /uploads/1
   def destroy
     @upload.destroy
     redirect_to uploads_url, notice: 'Upload was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+    def set_s3_direct_post
+      @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201')
+    end
+
     def set_upload
       @upload = Upload.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
     def upload_params
-      params.require(:upload).permit(:user_id, :upload_url)
+      params.require(:upload).permit(:upload_url)
     end
 end

@@ -16,3 +16,4 @@
 //= require z.jquery.fileupload
 //= require twitter/bootstrap
 //= require bootstrap
+//= require upload

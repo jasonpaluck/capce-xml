@@ -1,15 +1,10 @@
-= form_for @upload, html: { class: "form form-horizontal upload" } do |f|
+= form_for @upload, html: { class: "form form-horizontal upload directUpload", data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } } do |f|
   .form-group
-    = f.label :user_id, class: 'control-label col-lg-2'
+    = f.label :upload_url, 'Excel File', class: 'control-label col-lg-2'
     .col-lg-10
-      = f.text_field :user_id, class: 'form-control', required: true
-    = f.error_span(:user_id)
-  .form-group
-    = f.label :upload_url, class: 'control-label col-lg-2'
-    .col-lg-10
-      = f.text_field :upload_url, class: 'form-control', required: true
+      = f.file_field :upload_url, class: 'form-control', required: true
     = f.error_span(:upload_url)
   .form-group
     .col-lg-offset-2.col-lg-10
-      = f.submit nil,class: 'btn btn-primary'
+      = f.submit 'Generate XML', class: 'btn btn-primary', disabled: true
       = link_to t('.cancel', :default => t("helpers.links.cancel")), uploads_path, :class => 'btn btn-default'
