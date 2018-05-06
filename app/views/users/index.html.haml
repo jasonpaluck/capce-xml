@@ -18,6 +18,5 @@
         %td= user.last_sign_in_at.in_time_zone.strftime("%m/%d/%Y at %I:%M%p")
         %td
           = link_to "Edit", edit_user_path(user), :class => 'btn btn-default btn-xs'
-          = link_to "Destroy", user_path(user), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-xs btn-danger'
 
 = link_to t('.new', :default => t("helpers.links.new")), new_user_path, :class => 'btn btn-primary'
