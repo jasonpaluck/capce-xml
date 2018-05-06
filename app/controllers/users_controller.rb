@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
-    if @user.update(user_params)
+    if not_inactivating_self && @user.update(user_params)
       redirect_to users_url, notice: 'User was successfully updated.'
     else
       render :edit
@@ -35,6 +35,16 @@ class UsersController < ApplicationController
   end
 
   private
+
+    def not_inactivating_self
+      if !(@user == current_user && params[:user][:active] == "0")
+        true
+      else
+        @user.errors.add(:active, "Sorry, you can't inactivate yourself or you would immediately be logged out!")
+        false
+      end
+    end
+
     def set_user
       @user = User.find(params[:id])
     end

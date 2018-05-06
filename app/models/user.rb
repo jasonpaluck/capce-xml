@@ -7,4 +7,12 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-'.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { with: VALID_EMAIL_REGEX, allow_blank: true }
 
+  def active_for_authentication?
+    super && self.active
+  end
+
+  def inactive_message
+    "Sorry, this account has been deactivated."
+  end
+
 end
