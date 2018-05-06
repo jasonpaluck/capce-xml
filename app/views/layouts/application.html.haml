@@ -12,20 +12,15 @@
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
 
-
   %body
-    .navbar.navbar-default.navbar-static-top
-      .container
-        %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        %a.navbar-brand(href="#") CAPCE Excel to XML
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          - if user_signed_in?
-            %ul.nav.navbar-nav
-              %li= link_to "Manage Users", "/users"
-              %li= link_to('Logout', destroy_user_session_path, method: :delete)
+
+    = nav_bar brand: "CAPCE Excel to XML", responsive: true do
+      - if user_signed_in?
+        = menu_group do
+          = menu_item "Home", root_path
+          = menu_item "Manage Users", users_path
+        = menu_group pull: :right do
+          = menu_item "Logout", destroy_user_session_path, method: :delete
 
     .container
       .row
