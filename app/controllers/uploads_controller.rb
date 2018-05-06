@@ -20,6 +20,12 @@ class UploadsController < ApplicationController
     end
   end
 
+  def show
+    excel_stream = S3_BUCKET.object(@upload.upload_url)
+    workbook = RubyXL::Parser.parse_buffer(excel_stream.get.body)
+    worksheet = workbook[0]
+    @cell = worksheet.sheet_data[0][0].value # Returns cell A1 in the worksheet
+  end
 
   def destroy
     @upload.destroy

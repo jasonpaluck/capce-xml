@@ -25,8 +25,9 @@ gem "uglifier"
 gem 'devise'
 gem "haml-rails", "~> 1.0"
 gem "twitter-bootstrap-rails"
-gem 'aws-sdk', '~> 2'
+gem 'aws-sdk', '~> 3'
 gem 'kaminari'
+gem 'rubyXL'
 
 group :development do
   gem "listen"

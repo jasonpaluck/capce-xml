@@ -32,12 +32,11 @@ $(function() {
         submitButton.prop('disabled', false);
         progressBar.text("Uploading complete, click Generate XML!");
 
-        // extract key and generate URL from response
+        // extract key from response
         var key   = $(data.jqXHR.responseXML).find("Key").text();
-        var url   = '//' + form.data('host') + '/' + key;
 
         // create hidden field
-        var input = $("<input />", { type:'hidden', name: fileInput.attr('name'), value: url })
+        var input = $("<input />", { type:'hidden', name: fileInput.attr('name'), value: key })
         form.append(input);
       },
       fail: function(e, data) {
