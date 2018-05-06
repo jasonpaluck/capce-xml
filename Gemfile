@@ -25,6 +25,7 @@ gem "uglifier"
 gem 'devise'
 gem "haml-rails", "~> 1.0"
 gem "twitter-bootstrap-rails"
+gem 'aws-sdk', '~> 2'
 
 group :development do
   gem "listen"
