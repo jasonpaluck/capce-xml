@@ -37,7 +37,7 @@ class UploadsController < ApplicationController
     respond_to do |format|
       format.xml do
         stream = render_to_string(template: 'uploads/show')
-        send_data stream, type: "text/xml"
+        send_data stream, type: "text/xml", filename: generate_filename
       end
     end
   end
@@ -51,6 +51,10 @@ class UploadsController < ApplicationController
 
     def set_s3_direct_post
       @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201')
+    end
+
+    def generate_filename
+      "CAPCE_#{SecureRandom.urlsafe_base64(5)[0..4].downcase}_#{@upload.created_at.strftime("%m%d%y")}.xml"
     end
 
     def set_upload
