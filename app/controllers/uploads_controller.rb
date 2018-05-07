@@ -24,7 +24,22 @@ class UploadsController < ApplicationController
     excel_stream = S3_BUCKET.object(@upload.upload_url)
     workbook = RubyXL::Parser.parse_buffer(excel_stream.get.body)
     worksheet = workbook[0]
-    @cell = worksheet.sheet_data[0][0].value # Returns cell A1 in the worksheet
+    header_row = worksheet.sheet_data[0]
+    excel_columns = []
+    header_row.cells.each { |cell|
+      val = cell && cell.value
+      excel_columns << val
+    }
+    worksheet.delete_row(0)
+    @worksheet = worksheet
+    @excel_columns = excel_columns.compact
+    @valid = @excel_columns == Upload::EXCEL_COLUMNS
+    respond_to do |format|
+      format.xml do
+        stream = render_to_string(template: 'uploads/show')
+        send_data stream, type: "text/xml"
+      end
+    end
   end
 
   def destroy
