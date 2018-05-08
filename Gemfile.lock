@@ -640,6 +640,9 @@ GEM
       railties (>= 3.2, < 6.0)
     erubi (1.7.1)
     erubis (2.7.0)
+    exception_notification (4.2.2)
+      actionmailer (>= 4.0, < 6)
+      activesupport (>= 4.0, < 6)
     execjs (2.7.0)
     ffi (1.9.23)
     flutie (2.0.0)
@@ -867,6 +870,7 @@ DEPENDENCIES
   bundler-audit (>= 0.5.0)
   devise
   dotenv-rails
+  exception_notification
   flutie
   formulaic
   haml-rails (~> 1.0)
