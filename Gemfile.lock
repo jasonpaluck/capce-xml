@@ -694,6 +694,8 @@ GEM
       less (~> 2.6.0)
       sprockets (> 2, < 4)
       tilt
+    letter_opener (1.6.0)
+      launchy (~> 2.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -872,6 +874,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   launchy
+  letter_opener
   listen
   pg (~> 0.18)
   pry-byebug
