@@ -2,7 +2,7 @@
   .form-group
     = f.label :upload_url, 'Excel File', class: 'control-label col-lg-2'
     .col-lg-10
-      = f.file_field :upload_url, class: 'form-control', required: true
+      = f.file_field :upload_url, accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', class: 'form-control', required: true
     = f.error_span(:upload_url)
   .form-group
     .col-lg-offset-2.col-lg-10
