@@ -28,6 +28,7 @@ gem "twitter-bootstrap-rails"
 gem 'aws-sdk', '~> 3'
 gem 'kaminari'
 gem 'rubyXL'
+gem 'exception_notification'
 
 group :development do
   gem "listen"

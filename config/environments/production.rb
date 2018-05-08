@@ -35,4 +35,10 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { protocol: 'https', host: ENV.fetch("APPLICATION_HOST") }
   config.action_mailer.asset_host = ENV.fetch("ASSET_HOST", ENV.fetch("APPLICATION_HOST"))
 end
+Rails.application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[CAPCE-XML] ",
+    :sender_address => %{"Error Notifier" <jason@paluck.com>},
+    :exception_recipients => %w{jason@paluck.com}
+  }
 Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i
