@@ -33,18 +33,23 @@ class UploadsController < ApplicationController
     worksheet.delete_row(0)
     @worksheet = worksheet
     @excel_columns = excel_columns.compact
-    @valid = @excel_columns == Upload::EXCEL_COLUMNS
+    valid = @excel_columns == Upload::EXCEL_COLUMNS
     respond_to do |format|
       format.xml do
-        stream = render_to_string(template: 'uploads/show')
-        send_data stream, type: "text/xml", filename: generate_filename
+        if valid
+          stream = render_to_string(template: 'uploads/show')
+          send_data stream, type: "text/xml", filename: generate_filename
+        else
+          flash[:alert] = 'The column headers of the uploaded Excel file are not valid. Please fix original file and create a new conversion.'
+          redirect_to uploads_url
+        end
       end
     end
   end
 
   def destroy
     @upload.destroy
-    redirect_to uploads_url, notice: 'Upload was successfully destroyed.'
+    redirect_to uploads_url, alert: 'Upload was successfully destroyed.'
   end
 
   private
