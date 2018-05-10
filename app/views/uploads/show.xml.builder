@@ -41,27 +41,29 @@ xml.dsXmlSummary("xmlns" => "http://www.tempuri.org/dsXmlSummary.xsd") do
     end
   end
   @worksheet.each do |row|
-    xml.admin_reports_xmlReports do
-      xml.emailAddress(row && row.cells[7].value)
-      xml.licenseType(row && row.cells[15].value)
-      xml.stateIssued(row && row.cells[14].value)
-      xml.licenseNo(row && row.cells[13].value)
-      xml.expiration(row && row.cells[16].value.is_a?(DateTime) ? row.cells[16].value.strftime("%m/%d/%Y") : row.cells[16].value)
-      xml.dateOfCompletion(row && row.cells[8].value.is_a?(DateTime) ? row.cells[8].value.strftime("%m/%d/%Y") : row.cells[8].value)
-      xml.provider(row && row.cells[12].value)
-      xml.city(row && row.cells[4].value)
-      xml.nameLast(row && row.cells[0].value)
-      xml.nameFirst(row && row.cells[1].value)
-      xml.nameMiddle(row && row.cells[2].value)
-      xml.street(row && row.cells[3].value)
-      xml.nremtReReg(row && row.cells[18].value.is_a?(DateTime) ? row.cells[18].value.strftime("%m/%d/%Y") : row.cells[18].value)
-      xml.state(row && row.cells[5].value)
-      xml.zip(row && row.cells[6].value)
-      xml.nremtNo(row && row.cells[17].value)
-      xml.phone(row && row.cells[9].value)
-      xml.courseNo(row && row.cells[10].value)
-      xml.units(row && row.cells[11].value)
-      xml.Type(row && row.cells[19].value)
+    if row.cells[8] && row.cells[8].value.is_a?(DateTime)
+      xml.admin_reports_xmlReports do
+        xml.emailAddress(row && row.cells[7].value)
+        xml.licenseType(row && row.cells[15].value)
+        xml.stateIssued(row && row.cells[14].value)
+        xml.licenseNo(row && row.cells[13].value)
+        xml.expiration(row && row.cells[16].value.is_a?(DateTime) ? row.cells[16].value.strftime("%m/%d/%Y") : row.cells[16].value)
+        xml.dateOfCompletion(row && row.cells[8].value.is_a?(DateTime) ? row.cells[8].value.strftime("%m/%d/%Y") : row.cells[8].value)
+        xml.provider(row && row.cells[12].value)
+        xml.city(row && row.cells[4].value)
+        xml.nameLast(row && row.cells[0].value)
+        xml.nameFirst(row && row.cells[1].value)
+        xml.nameMiddle(row && row.cells[2].value)
+        xml.street(row && row.cells[3].value)
+        xml.nremtReReg(row && row.cells[18].value.is_a?(DateTime) ? row.cells[18].value.strftime("%m/%d/%Y") : row.cells[18].value)
+        xml.state(row && row.cells[5].value)
+        xml.zip(row && row.cells[6].value)
+        xml.nremtNo(row && row.cells[17].value)
+        xml.phone(row && row.cells[9].value)
+        xml.courseNo(row && row.cells[10].value)
+        xml.units(row && row.cells[11].value)
+        xml.Type(row && row.cells[19].value)
+      end
     end
   end
 end
