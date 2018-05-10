@@ -41,7 +41,7 @@ xml.dsXmlSummary("xmlns" => "http://www.tempuri.org/dsXmlSummary.xsd") do
     end
   end
   @worksheet.each do |row|
-    if row.cells[8] && row.cells[8].value.is_a?(DateTime)
+    if row.cells[8] && !row.cells[8].value.nil?
       xml.admin_reports_xmlReports do
         xml.emailAddress(row && row.cells[7].value)
         xml.licenseType(row && row.cells[15].value)
