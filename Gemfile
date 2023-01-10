@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby "2.5.1"
+ruby "2.7.7"
 
 gem "autoprefixer-rails"
 gem "flutie"
@@ -27,7 +27,7 @@ gem "haml-rails", "~> 1.0"
 gem "twitter-bootstrap-rails"
 gem 'aws-sdk', '~> 3'
 gem 'kaminari'
-gem 'rubyXL'
+gem 'rubyXL', "= 3.3.29"
 gem 'exception_notification'
 
 group :development do
