@@ -41,4 +41,4 @@ Rails.application.config.middleware.use ExceptionNotification::Rack,
     :sender_address => %{"Error Notifier" <jason@paluck.com>},
     :exception_recipients => %w{jason@paluck.com}
   }
-Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i
+# Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i
