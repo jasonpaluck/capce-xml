@@ -1,19 +1,24 @@
 services:
   - type: web
     repo: https://github.com/jasonpaluck/capce-xml
-    name: rails
+    plan: free
+    name: capce-xml-web
     env: ruby
+    region: ohio
     buildCommand: "./bin/render-build.sh"
     startCommand: bundle exec rails s
     envVars:
-      - key: RAILS_MASTER_KEY
-        sync: false
       - key: DATABASE_URL
         fromDatabase:
-          name: postgres
+          name: capce-xml-db
           property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
 
 databases:
-  - name: postgres
+  - name: capce-xml-db
+    plan: free
+    databaseName: capce-xml
+    user: capce-xml
+    region: ohio
     ipAllowList: [] # only allow internal connections
-
