@@ -29,6 +29,7 @@ gem 'aws-sdk', '~> 3'
 gem 'kaminari'
 gem 'rubyXL', "= 3.3.29"
 gem 'exception_notification'
+gem "rack-timeout", require: "rack/timeout/base"
 
 group :development do
   gem "listen"
@@ -55,6 +56,6 @@ group :test do
   gem "webmock"
 end
 
-group :production do
-  gem "rack-timeout"
-end
+# group :production do
+#   gem "rack-timeout", require: "rack/timeout/base"
+# end
