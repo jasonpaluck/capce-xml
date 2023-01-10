@@ -18,7 +18,7 @@ services:
 databases:
   - name: capce-xml-db
     plan: free
-    databaseName: capce-xml-db
+    databaseName: capce_xml_db
     user: capcexml
     region: ohio
     ipAllowList: [] # only allow internal connections
