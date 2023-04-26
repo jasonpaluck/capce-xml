@@ -90,7 +90,7 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR="code --wait"
 export BETTER_ERRORS_VIRTUAL_PATH="/workspace"
-export BETTER_ERRORS_HOST_PATH="/Users/paluck/Documents/rails/capce-xml"
+export BETTER_ERRORS_HOST_PATH="/Users/paluck/Development/capce-xml"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
